@@ -23,7 +23,7 @@ public class Reunion {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "id")//Nombre de la columna en la BD
 	private int id;
 	@Column(name = "fecha")
 	private LocalDateTime fecha;

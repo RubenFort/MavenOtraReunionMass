@@ -34,5 +34,9 @@ public class App
 			System.out.println("No tienes ninguna reunión a la vista");
 		}
         
+        Reunion reunion3 = new Reunion(LocalDateTime.now().plus(1, ChronoUnit.DAYS), "Reunion de mañana");
+        dao.save(reunion3);
+        List<Reunion> reunionesManana = dao.reunionesManana();
+        System.out.println("Para mañana: " + reunionesManana);
     }
 }
