@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.internal.build.AllowSysOut;
 //Mapeo de clases
 
 @Entity//Se pone encima del elemento que queremosa anotar, que es la clase
@@ -17,18 +19,20 @@ import javax.persistence.Table;
 public class Reunion {
 	
 	//La tabla tiene 3 columnas, por lo tanto usamos 3  @columns
-	@Column(name = "id")
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
 	@Column(name = "fecha")
 	private Date fecha;
 	@Column(name = "asunto")
 	private String asunto;
 	
-	public Reunion(int id, Date fecha, String asunto) {
-		super();
-		this.id = id;
+	public Reunion() {
+    }
+	
+	public Reunion(Date fecha, String asunto) {
 		this.fecha = fecha;
 		this.asunto = asunto;
 	}
@@ -37,7 +41,7 @@ public class Reunion {
 		return id;
 	}
 
-	public void setAsunto(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -56,6 +60,10 @@ public class Reunion {
 	public void setAsunto(String asunto) {
 		this.asunto = asunto;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Reunion [id=" + id + ", fecha=" + fecha + ", asunto=" + asunto + "]" + "\n";
+	}
+
 }
