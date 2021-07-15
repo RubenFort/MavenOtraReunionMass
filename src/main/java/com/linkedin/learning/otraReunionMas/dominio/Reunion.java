@@ -5,9 +5,11 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.internal.build.AllowSysOut;
@@ -29,6 +31,9 @@ public class Reunion {
 	private LocalDateTime fecha;
 	@Column(name = "asunto")
 	private String asunto;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Sala sala;
 	
 	public Reunion() {
     }
@@ -61,10 +66,17 @@ public class Reunion {
 	public void setAsunto(String asunto) {
 		this.asunto = asunto;
 	}
+	
+	public Sala getSala() {
+		return sala;
+	}
+
+	public void setSala(Sala sala) {
+		this.sala = sala;
+	}
 
 	@Override
 	public String toString() {
 		return "Reunion [id=" + id + ", fecha=" + fecha + ", asunto=" + asunto + "]" + "\n";
 	}
-
 }

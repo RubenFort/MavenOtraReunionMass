@@ -1,8 +1,11 @@
 package com.linkedin.learning.otraReunionMas.dominio;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -14,6 +17,9 @@ public class Sala {
 	private String id;
 	private String description;
 	private int capacidad;
+	
+	@OneToMany(mappedBy = "sala")
+	private List<Reunion> reuniones;
 	
 	public Sala() {
 	}
@@ -46,6 +52,14 @@ public class Sala {
 
 	public void setCapacidad(int capacidad) {
 		this.capacidad = capacidad;
+	}
+	
+	public List<Reunion> getReuniones() {
+		return reuniones;
+	}
+
+	public void setReuniones(List<Reunion> reuniones) {
+		this.reuniones = reuniones;
 	}
 
 	@Override
