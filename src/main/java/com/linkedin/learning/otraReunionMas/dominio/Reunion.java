@@ -1,5 +1,6 @@
 package com.linkedin.learning.otraReunionMas.dominio;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -25,14 +26,14 @@ public class Reunion {
 	@Column(name = "id")
 	private int id;
 	@Column(name = "fecha")
-	private Date fecha;
+	private LocalDateTime fecha;
 	@Column(name = "asunto")
 	private String asunto;
 	
 	public Reunion() {
     }
 	
-	public Reunion(Date fecha, String asunto) {
+	public Reunion(LocalDateTime fecha, String asunto) {
 		this.fecha = fecha;
 		this.asunto = asunto;
 	}
@@ -45,11 +46,11 @@ public class Reunion {
 		this.id = id;
 	}
 
-	public Date getFecha() {
+	public LocalDateTime getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Date fecha) {
+	public void setFecha(LocalDateTime fecha) {
 		this.fecha = fecha;
 	}
 
