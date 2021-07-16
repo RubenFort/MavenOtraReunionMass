@@ -28,8 +28,8 @@ public class App
         List<Reunion> reuniones = reunionDao.getAll();
         System.out.println(reuniones);
         
-        Persona juan = new Persona("E001h", "Juan", "López");
-        Persona ana = new Persona("E002h", "Ana", "Gómez");
+        Persona juan = new Persona("E003a", "Juan", "López");
+        Persona ana = new Persona("E004b", "Ana", "Gómez");
         
         Set<Persona> equipo = new HashSet<>();
         equipo.add(juan);
@@ -54,6 +54,8 @@ public class App
         reunionesJuan.add(reunion);
         reunionesAna.add(reunion);
         reunionesAna.add(reunion1);
+        juan.setReuniones(reunionesJuan);
+        ana.setReuniones(reunionesAna);
         
         //Date dt = new Date();
         //Date tomorrow2 = new Date(dt.getTime() + (1000 * 60 * 60 * 24)*2);

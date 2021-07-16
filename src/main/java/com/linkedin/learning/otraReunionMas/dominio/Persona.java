@@ -1,5 +1,6 @@
 package com.linkedin.learning.otraReunionMas.dominio;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -28,14 +29,23 @@ public class Persona {
 	private Set<Reunion> reuniones;
 	
 	public Persona() {
+		//reuniones = new HashSet<>();
 	}
 
 	public Persona(String numeroEmpleado, String nombre, String apellidos) {
+		//this();
 		this.numeroEmpleado = numeroEmpleado;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 	}
 
+//	public void addReunion(Reunion reunion) {
+//		reuniones.add(reunion);
+//		if (!reunion.getParticipantes().contains(this)) {
+//			reunion.addParticipante(this);
+//		}
+//	}
+	
 	public int getId() {
 		return id;
 	}
@@ -75,6 +85,8 @@ public class Persona {
 	public void setReuniones(Set<Reunion> reuniones) {
 		this.reuniones = reuniones;
 	}
+	
+	
 
 	@Override
 	public String toString() {
