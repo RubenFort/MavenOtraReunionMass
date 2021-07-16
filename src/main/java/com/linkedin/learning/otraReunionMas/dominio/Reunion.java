@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.internal.build.AllowSysOut;
@@ -34,6 +35,9 @@ public class Reunion {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Sala sala;
+	
+	@OneToOne(mappedBy = "reunion")
+	private Acta acta;
 	
 	public Reunion() {
     }
@@ -73,6 +77,14 @@ public class Reunion {
 
 	public void setSala(Sala sala) {
 		this.sala = sala;
+	}
+	
+	public Acta getActa() {
+		return acta;
+	}
+
+	public void setActa(Acta acta) {
+		this.acta = acta;
 	}
 
 	@Override

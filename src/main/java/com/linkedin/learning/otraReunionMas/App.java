@@ -42,8 +42,6 @@ public class App
         List<Reunion> reunionesManana = reunionDao.reunionesManana();
         System.out.println("Para mañana: " + reunionesManana);
         
-
-        
         SalaDao salaDao = new SalaDao();
         
         System.out.println("****************************************************");
