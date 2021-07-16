@@ -4,7 +4,9 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.NoResultException;
 
@@ -12,8 +14,11 @@ import com.linkedin.learning.otraReunionMas.dao.ActaDao;
 import com.linkedin.learning.otraReunionMas.dao.ReunionDao;
 import com.linkedin.learning.otraReunionMas.dao.SalaDao;
 import com.linkedin.learning.otraReunionMas.dominio.Acta;
+import com.linkedin.learning.otraReunionMas.dominio.Persona;
 import com.linkedin.learning.otraReunionMas.dominio.Reunion;
 import com.linkedin.learning.otraReunionMas.dominio.Sala;
+
+import jdk.nashorn.internal.objects.NativeWeakMap;
 
 public class App 
 {
@@ -23,14 +28,32 @@ public class App
         List<Reunion> reuniones = reunionDao.getAll();
         System.out.println(reuniones);
         
+        Persona juan = new Persona("E001h", "Juan", "López");
+        Persona ana = new Persona("E002h", "Ana", "Gómez");
+        
+        Set<Persona> equipo = new HashSet<>();
+        equipo.add(juan);
+        equipo.add(ana);
+        
         Reunion reunion = new Reunion(LocalDateTime.now(), "Test");
         System.out.println(reunion);
+        
+        reunion.setParticipantes(equipo);
         reunionDao.save(reunion);
         System.out.println(reunion);
         
         ActaDao actaDao = new ActaDao();
         Acta acta = new Acta("Reunion anulada", reunion);
         actaDao.save(acta);
+        
+        Reunion reunion1 = new Reunion(LocalDateTime.now(),"Otra reunión de Test");
+        reunionDao.save(reunion1);
+        
+        Set<Reunion> reunionesJuan = new HashSet<>();
+        Set<Reunion> reunionesAna = new HashSet<>();
+        reunionesJuan.add(reunion);
+        reunionesAna.add(reunion);
+        reunionesAna.add(reunion1);
         
         //Date dt = new Date();
         //Date tomorrow2 = new Date(dt.getTime() + (1000 * 60 * 60 * 24)*2);

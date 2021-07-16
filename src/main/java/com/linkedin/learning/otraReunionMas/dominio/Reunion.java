@@ -2,13 +2,16 @@ package com.linkedin.learning.otraReunionMas.dominio;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -38,6 +41,9 @@ public class Reunion {
 	
 	@OneToOne(mappedBy = "reunion")
 	private Acta acta;
+	
+	@ManyToMany(mappedBy = "reuniones", cascade = CascadeType.ALL)//Persistir datos en Persona sin necesidad de DAO
+	private Set<Persona> participantes;
 	
 	public Reunion() {
     }
@@ -85,6 +91,14 @@ public class Reunion {
 
 	public void setActa(Acta acta) {
 		this.acta = acta;
+	}
+	
+	public Set<Persona> getParticipantes() {
+		return participantes;
+	}
+
+	public void setParticipantes(Set<Persona> participantes) {
+		this.participantes = participantes;
 	}
 
 	@Override
