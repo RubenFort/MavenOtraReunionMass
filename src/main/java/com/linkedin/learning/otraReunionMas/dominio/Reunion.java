@@ -27,7 +27,6 @@ import org.hibernate.internal.build.AllowSysOut;
 public class Reunion {
 	
 	//La tabla tiene 3 columnas, por lo tanto usamos 3  @columns
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")//Nombre de la columna en la BD
@@ -47,9 +46,11 @@ public class Reunion {
 	private Set<Persona> participantes;
 	
 	public Reunion() {
+		participantes = new HashSet<>();
     }
 	
 	public Reunion(LocalDateTime fecha, String asunto) {
+		this();
 		this.fecha = fecha;
 		this.asunto = asunto;
 	}
@@ -98,19 +99,16 @@ public class Reunion {
 		return participantes;
 	}
 
-	public void setParticipantes(Set<Persona> participantes) {
-		this.participantes = participantes;
-	}
-	
-//	public void addParticipante(Persona participante) {
-//		if (participantes == null) {
-//			participantes = new HashSet();
-//		}
-//		participantes.add(participante);
-//		if (!participante.getReuniones().contains(this)) {
-//			participante.addReunion(this);
-//		}
+//	public void setParticipantes(Set<Persona> participantes) {
+//		this.participantes = participantes;
 //	}
+	
+	public void addParticipante(Persona participante) {
+		participantes.add(participante);
+		if (!participante.getReuniones().contains(this)) {
+			participante.addReunion(this);
+		}
+	}
 
 	@Override
 	public String toString() {

@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.NoResultException;
+import javax.persistence.PersistenceException;
+
+import org.hibernate.exception.ConstraintViolationException;
 
 import com.linkedin.learning.otraReunionMas.dao.ActaDao;
 import com.linkedin.learning.otraReunionMas.dao.ReunionDao;
@@ -28,17 +31,16 @@ public class App
         List<Reunion> reuniones = reunionDao.getAll();
         System.out.println(reuniones);
         
-        Persona juan = new Persona("E003a", "Juan", "López");
-        Persona ana = new Persona("E004b", "Ana", "Gómez");
-        
-        Set<Persona> equipo = new HashSet<>();
-        equipo.add(juan);
-        equipo.add(ana);
+        Persona juan = new Persona("E003f", "Juan", "López");
+        Persona ana = new Persona("E004f", "Ana", "Gómez");
         
         Reunion reunion = new Reunion(LocalDateTime.now(), "Test");
         System.out.println(reunion);
+        reunion.addParticipante(juan);
+        reunion.addParticipante(ana);
         
-        reunion.setParticipantes(equipo);
+        reunionDao.save(reunion);
+
         reunionDao.save(reunion);
         System.out.println(reunion);
         
@@ -47,15 +49,8 @@ public class App
         actaDao.save(acta);
         
         Reunion reunion1 = new Reunion(LocalDateTime.now(),"Otra reunión de Test");
+        juan.addReunion(reunion1);
         reunionDao.save(reunion1);
-        
-        Set<Reunion> reunionesJuan = new HashSet<>();
-        Set<Reunion> reunionesAna = new HashSet<>();
-        reunionesJuan.add(reunion);
-        reunionesAna.add(reunion);
-        reunionesAna.add(reunion1);
-        juan.setReuniones(reunionesJuan);
-        ana.setReuniones(reunionesAna);
         
         //Date dt = new Date();
         //Date tomorrow2 = new Date(dt.getTime() + (1000 * 60 * 60 * 24)*2);

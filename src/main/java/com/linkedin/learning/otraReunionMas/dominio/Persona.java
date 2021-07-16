@@ -29,22 +29,22 @@ public class Persona {
 	private Set<Reunion> reuniones;
 	
 	public Persona() {
-		//reuniones = new HashSet<>();
+		reuniones = new HashSet<>();
 	}
 
 	public Persona(String numeroEmpleado, String nombre, String apellidos) {
-		//this();
+		this();
 		this.numeroEmpleado = numeroEmpleado;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 	}
 
-//	public void addReunion(Reunion reunion) {
-//		reuniones.add(reunion);
-//		if (!reunion.getParticipantes().contains(this)) {
-//			reunion.addParticipante(this);
-//		}
-//	}
+	public void addReunion(Reunion reunion) {
+		reuniones.add(reunion);
+		if (!reunion.getParticipantes().contains(this)) {
+			reunion.addParticipante(this);
+		}
+	}
 	
 	public int getId() {
 		return id;
@@ -82,11 +82,9 @@ public class Persona {
 		return reuniones;
 	}
 
-	public void setReuniones(Set<Reunion> reuniones) {
-		this.reuniones = reuniones;
-	}
-	
-	
+//	public void setReuniones(Set<Reunion> reuniones) {
+//		this.reuniones = reuniones;
+//	}
 
 	@Override
 	public String toString() {
