@@ -8,8 +8,10 @@ import java.util.List;
 
 import javax.persistence.NoResultException;
 
+import com.linkedin.learning.otraReunionMas.dao.ActaDao;
 import com.linkedin.learning.otraReunionMas.dao.ReunionDao;
 import com.linkedin.learning.otraReunionMas.dao.SalaDao;
+import com.linkedin.learning.otraReunionMas.dominio.Acta;
 import com.linkedin.learning.otraReunionMas.dominio.Reunion;
 import com.linkedin.learning.otraReunionMas.dominio.Sala;
 
@@ -25,6 +27,10 @@ public class App
         System.out.println(reunion);
         reunionDao.save(reunion);
         System.out.println(reunion);
+        
+        ActaDao actaDao = new ActaDao();
+        Acta acta = new Acta("Reunion anulada", reunion);
+        actaDao.save(acta);
         
         //Date dt = new Date();
         //Date tomorrow2 = new Date(dt.getTime() + (1000 * 60 * 60 * 24)*2);

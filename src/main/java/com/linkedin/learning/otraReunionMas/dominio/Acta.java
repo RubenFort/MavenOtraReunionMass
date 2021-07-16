@@ -21,6 +21,15 @@ public class Acta {
 	@JoinColumn
 	private Reunion reunion;
 
+	public Acta() {
+	}
+	
+	public Acta(String contenido, Reunion reunion) {
+		this.contenido = contenido;
+		this.reunion = reunion;
+		reunion.setActa(this);//Vinculo el acta en la reunión a traves del constructor del Acta
+	}
+
 	public int getId() {
 		return id;
 	}
