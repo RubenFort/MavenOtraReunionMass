@@ -15,7 +15,9 @@ public class AppConsultas {
 		
 		List<Sala> salasPara3 = salaDao.findSalaPanaN(3);
 		System.out.println("Salas para 3: " + salasPara3);
-
+		
+		List<Sala> salasAdecuadasPara3 = salaDao.findSalaAdecuadasPanaN(3);
+		System.out.println("Salas adecuadas para 3: " + salasAdecuadasPara3);
+		
 	}
-
 }
