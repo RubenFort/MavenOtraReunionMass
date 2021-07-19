@@ -55,6 +55,11 @@ public class Reunion {
 		this.asunto = asunto;
 	}
 	
+	public Reunion(Reunion r) {
+		this.fecha = r.fecha;
+		this.asunto = r.asunto;
+	}
+	
 	public int getId() {
 		return id;
 	}
