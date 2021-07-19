@@ -12,6 +12,7 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org
 			      <property name="javax.persistence.jdbc.password" value="1234abc."/>
 			      <property name="javax.persistence.schema-generation.database.action" value="update"/>
 			      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
+			      <property name="hibernate.show_sql" value="true"/>
 		    </properties>
 	  </persistence-unit>
 </persistence>
