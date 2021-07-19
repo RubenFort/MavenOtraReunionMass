@@ -3,15 +3,9 @@ package com.linkedin.learning.otraReunionMas;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.NoResultException;
-import javax.persistence.PersistenceException;
-
-import org.hibernate.exception.ConstraintViolationException;
 
 import com.linkedin.learning.otraReunionMas.dao.ActaDao;
 import com.linkedin.learning.otraReunionMas.dao.ReunionDao;
@@ -21,11 +15,9 @@ import com.linkedin.learning.otraReunionMas.dominio.Persona;
 import com.linkedin.learning.otraReunionMas.dominio.Reunion;
 import com.linkedin.learning.otraReunionMas.dominio.Sala;
 
-import jdk.nashorn.internal.objects.NativeWeakMap;
-
 public class App {
 	public static void main(String[] args) throws SQLIntegrityConstraintViolationException {
-		
+
 		// DAOs
 		ReunionDao reunionDao = new ReunionDao();
 		ActaDao actaDao = new ActaDao();
